@@ -13,6 +13,7 @@
 
 <body>
   <div id="text-container">
+    <!-- Poster Container -->
     <div id="line-one">
       <h1 id="first_Line">Iam</h1>
     </div>
@@ -25,22 +26,52 @@
   </div>
 
   <div>
-    <input type="text" placeholder="First Line">
-    <input type="text" placeholder="Second Line">
-    <input type="text" placeholder="Third Line">
+    <!-- Input Fields -->
+    <input type="text" placeholder="First Line" id="first_Line_input">
+    <input type="text" placeholder="Second Line" id="second_Line_input">
+    <input type="text" placeholder="Third Line" id="third_Line_input">
   </div>
-  <div>
-    <button id="download" class="button-21 blueColor">Update</button>
-    <button id="download" class="button-21 blueColor">Download</button>
+
+  <div style="padding-top: 0;">
+    <!-- Button -->
+    <button id="generate_btn" class="button-21 blueColor">Generate</button>
+    <button id="download_btn" class="button-21 blueColor">Download</button>
   </div>
   <!-- JavaScript -->
   <script src="./dom-to-image.js"></script>
 
   <script>
+    // Div Text Container
     const text_container = document.getElementById('text-container');
-    const download_btn = document.getElementById('download');
+
+    //  Button
+    const download_btn = document.getElementById('download_btn');
+    const generate_btn = document.getElementById('generate_btn');
+
+    // Input Field
+    const first_Line_input = document.getElementById('first_Line_input');
+    const second_Line_input = document.getElementById('second_Line_input');
+    const third_Line_input = document.getElementById('third_Line_input');
+
+    // Text Line
+    const first_Line = document.getElementById('first_Line')
+    const second_Line = document.getElementById('second_Line')
+    const third_Line = document.getElementById('third_Line')
+
+
+    generate_btn.addEventListener('click', () => {
+      // When Generate Button Click 
+      //  It Will change the previous text and Update New text
+      first_Line.innerText = first_Line_input.value
+      second_Line.innerText = second_Line_input.value
+      third_Line.innerText = third_Line_input.value
+
+
+    })
 
     download_btn.addEventListener('click', () => {
+      // When Download Button Click
+      // It wil be download Images into Jpeg format
       domtoimage.toJpeg(text_container).then((data) => {
         let link = document.createElement('a');
         link.download = 'poster__one_numan.jpg';
@@ -48,21 +79,9 @@
         link.click();
       })
     })
-    // const canvas = document.getElementById('canvas');
-    // const ctx = canvas.getContext('2d');
-    // download = document.getElementById('download')
-    // download.addEventListener('click', function (e) {
-    //   console.log(canvas.toDataURL());
-    //   const link = document.createElement('a');
-    //   link.download = 'download.png';
-    //   link.href = canvas.toDataURL();
-    //   link.click();
-    //   link.delete;
-    // });
-
-
-
   </script>
+  <!-- Thanks LiaTsernant https://codepen.io/LiaTsernant/pen/dywewdw -->
+  <!-- Thanks FreeFrontEnd https://freefrontend.com/css-text-effects/ -->
 </body>
 
 </html>
