@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>One Numan | Font Style</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet" /> -->
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+  <div id="text-container">
+    <div id="line-one">
+      <h1 id="first_Line">Iam</h1>
+    </div>
+    <div id="line-two">
+      <h1 id="second_Line">مُحَمَّد</h1>
+    </div>
+    <div id="line-three">
+      <h1 id="third_Line">Numan</h1>
+    </div>
+  </div>
+
+  <div>
+    <input type="text" placeholder="First Line">
+    <input type="text" placeholder="Second Line">
+    <input type="text" placeholder="Third Line">
+  </div>
+  <div>
+    <button id="download" class="button-21 blueColor">Update</button>
+    <button id="download" class="button-21 blueColor">Download</button>
+  </div>
+  <!-- JavaScript -->
+  <script src="./dom-to-image.js"></script>
+
+  <script>
+    const text_container = document.getElementById('text-container');
+    const download_btn = document.getElementById('download');
+
+    download_btn.addEventListener('click', () => {
+      domtoimage.toJpeg(text_container).then((data) => {
+        let link = document.createElement('a');
+        link.download = 'poster__one_numan.jpg';
+        link.href = data;
+        link.click();
+      })
+    })
+    // const canvas = document.getElementById('canvas');
+    // const ctx = canvas.getContext('2d');
+    // download = document.getElementById('download')
+    // download.addEventListener('click', function (e) {
+    //   console.log(canvas.toDataURL());
+    //   const link = document.createElement('a');
+    //   link.download = 'download.png';
+    //   link.href = canvas.toDataURL();
+    //   link.click();
+    //   link.delete;
+    // });
+
+
+
+  </script>
+</body>
+
+</html>
